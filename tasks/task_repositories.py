@@ -22,8 +22,8 @@ class InMemoryTaskRepository(TaskRepository):
     def update_task(self, task_id: int, task_update: TaskUpdate):
         task = self.tasks.get(task_id)
         if task:
-            task.description = task_update.description
-            task.done = task_update.done
+            task.description =  task_update.description if task_update.description else task.description
+            task.done = task_update.done if task_update.done is not None else task.done
         return task
 
     def delete_task(self, task_id: int):

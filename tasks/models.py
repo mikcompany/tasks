@@ -12,8 +12,8 @@ class TaskCreate(SQLModel, table=False):
     description: str = Field(default="", max_length=255)
 
 class TaskUpdate(SQLModel, table=False):
-    description: str = Field(default="", max_length=255)
-    done: bool= Field(default=False)
+    description: str | None = Field(default="", max_length=255)
+    done: bool | None = Field(default=False)
 
 sqlite_file_name = "tasks.db"
 sqlite_url = f"sqlite:///{sqlite_file_name}"
