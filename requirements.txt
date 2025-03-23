@@ -4,3 +4,4 @@ pytest-cov
 sqlmodel
 typer
 black
+alembic

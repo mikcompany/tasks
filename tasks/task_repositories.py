@@ -38,11 +38,12 @@ class InMemoryTaskRepository(TaskRepository):
 
 
 class SqliteTaskRepository(TaskRepository):
-    def __init__(self, db_name: str):
+    def __init__(self, db_name: str, testing: bool = False):
         self.engine = create_engine(
             f"sqlite:///{db_name}", connect_args={"check_same_thread": False}
         )
-        SQLModel.metadata.create_all(self.engine)
+        if testing:
+            SQLModel.metadata.create_all(self.engine)
 
     def list_tasks(self) -> list[Task]:
         tasks: list[Task] = []

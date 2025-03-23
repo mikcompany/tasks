@@ -8,7 +8,7 @@ class TestSqliteTaskRepositories:
     @pytest.fixture(autouse=True)
     def init_repo(self, tmp_path):
         db_file = tmp_path / "test.db"
-        self.repository = SqliteTaskRepository(str(db_file))
+        self.repository = SqliteTaskRepository(str(db_file), testing=True)
         # seed initial data
         for desc in ("buy milk", "buy eggs", "buy bread"):
             self.repository.create_task(TaskCreate(description=desc))
