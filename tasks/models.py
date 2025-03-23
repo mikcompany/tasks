@@ -2,6 +2,7 @@ from typing import Annotated
 from fastapi import Depends
 from sqlmodel import SQLModel, Field, create_engine, Session
 
+
 class Task(SQLModel, table=True):
     id: int | None = Field(default = None, primary_key=True)
     description: str = Field(default="", max_length=255)

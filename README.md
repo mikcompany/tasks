@@ -11,5 +11,5 @@ pip install -r requirements.txt
 
 ## Usage
 ```bash
-fastapi dev src/mainapp/main.py
+fastapi dev mainapp/main.py
 ```

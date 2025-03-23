@@ -2,3 +2,4 @@ fastapi[standard]
 pytest
 pytest-cov
 sqlmodel
+typer

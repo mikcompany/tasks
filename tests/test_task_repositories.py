@@ -1,5 +1,5 @@
 from tasks.task_repositories import InMemoryTaskRepository
-from tasks.tasks import TaskCreate, TaskUpdate
+from tasks.models import TaskCreate, TaskUpdate
 
 class TestTaskRepositories:
     def setup_method(self):
@@ -11,6 +11,7 @@ class TestTaskRepositories:
     def test_create_task(self):
         assert(len(self.repository.tasks) == 3)
         task = self.repository.create_task(TaskCreate(description="buy cheese"))
+        assert(task is not None)
         assert(len(self.repository.tasks) == 4)
         assert(task.description == "buy cheese")
         assert(task.done == False)
@@ -47,6 +48,7 @@ class TestTaskRepositories:
         self.repository.delete_task(2)
         assert(len(self.repository.tasks) == 2)
         new_task = self.repository.create_task(TaskCreate(description="buy apples"))
+        assert(new_task is not None)
         assert(len(self.repository.tasks) == 3)
         assert(new_task.id != 2)
         task_ids = [task.id for task in self.repository.tasks.values()]
