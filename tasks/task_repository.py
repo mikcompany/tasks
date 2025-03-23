@@ -2,8 +2,8 @@ from typing import Protocol
 from tasks.models import Task, TaskCreate, TaskUpdate
 from typing import Optional
 
-class TaskRepository(Protocol):
 
+class TaskRepository(Protocol):
     def list_tasks(self) -> Optional[list[Task]]:
         pass
 

@@ -3,3 +3,4 @@
 **/.ropeproject
 **/.pytest_cache
 **/*.db
+.zed
