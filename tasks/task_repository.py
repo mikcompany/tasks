@@ -4,17 +4,14 @@ from typing import Optional
 
 
 class TaskRepository(Protocol):
-    def list_tasks(self) -> Optional[list[Task]]:
-        pass
+    def list_tasks(self) -> list[Task]: ...
 
-    def create_task(self, task_create: TaskCreate) -> Optional[Task]:
-        pass
+    def create_task(self, task_create: TaskCreate) -> Optional[Task]: ...
 
-    def get_task(self, task_id: int) -> Optional[Task]:
-        pass
+    def get_task(self, task_id: int) -> Optional[Task]: ...
 
-    def update_task(self, task_id: int, task_update: TaskUpdate) -> Optional[Task]:
-        pass
+    def update_task(self, task_id: int, task_update: TaskUpdate) -> Optional[Task]: ...
 
-    def delete_task(self, task_id: int) -> Optional[Task]:
-        pass
+    def delete_task(self, task_id: int) -> Optional[Task]: ...
+
+    def truncate(self) -> None: ...

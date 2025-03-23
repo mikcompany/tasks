@@ -16,6 +16,21 @@ def new(description: str):
 
 
 @tasks_app.command()
+def get(task_id: int):
+    task = repository.get_task(task_id)
+    if task is None:
+        typer.echo(f"Task with id {task_id} not found")
+    else:
+        typer.echo(f"Task: {task}")
+
+
+@tasks_app.command()
+def truncate():
+    repository.truncate()
+    typer.echo("Truncated task repository")
+
+
+@tasks_app.command()
 def list():
     typer.echo(f"Task list: {repository.list_tasks()}")
 

@@ -1,18 +1,10 @@
 from fastapi import FastAPI, HTTPException
-from tasks.task_repositories import InMemoryTaskRepository
+from tasks.task_repositories import SqliteTaskRepository
 from tasks.task_repository import TaskRepository
 from tasks.models import Task, TaskCreate, TaskUpdate
-from tasks.models import create_db_and_tables
 
 app = FastAPI()
-
-
-@app.on_event("startup")
-def on_startup():
-    create_db_and_tables()
-
-
-repository: TaskRepository = InMemoryTaskRepository()
+repository: TaskRepository = SqliteTaskRepository("tasks.db")
 
 
 @app.get("/")
